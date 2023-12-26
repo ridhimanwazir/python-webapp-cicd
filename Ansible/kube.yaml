@@ -1,6 +1,6 @@
 ---
 - name: deploy to k8
-  hosts: local
+  hosts: k8
   gather_facts: false
 
   tasks:
