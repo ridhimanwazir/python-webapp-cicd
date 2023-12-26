@@ -49,7 +49,7 @@ pipeline{
                 }    
               }
         }
-        stage("TRIVY File scan"){
+        stage("TRIVY docker image scan"){
             steps{
                 sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
             }
