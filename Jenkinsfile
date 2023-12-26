@@ -53,17 +53,6 @@ pipeline{
                 sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
             }
         }
-        stage('minikube deployment using ansible'){
-            steps{
-                dir('Ansible') {
-                    script {
-                        def ansibleCommand = """
-                            ansible-playbook -i /etc/ansible/hosts kube.yaml -vvv
-                        """
-                        sh(ansibleCommand)
-                  }
-                } 
-            }
-        }
+        
     }
 }
