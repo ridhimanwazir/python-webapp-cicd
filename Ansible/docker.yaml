@@ -27,19 +27,3 @@
 
     - name: Run container
       command: docker run -d --name webapp -p 5000:5000 ridhimanwazir/python-webapp:latest
-    
-    - name: delete old deployment
-      command: kubectl delete -f /home/ubuntu/Deployment.yml --kubeconfig=/home/ubuntu/.kube/config
-      ignore_errors: true
-
-    - name: delete old service
-      command: kubectl delete -f /home/ubuntu/Service.yml --kubeconfig=/home/ubuntu/.kube/config
-      ignore_errors: true
-
-    - name: Copy deployment.yaml to Kubernetes master
-      copy:
-        src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
-        dest: /home/ubuntu/
-
-    - name: create new deployment
-      command: kubectl apply -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config

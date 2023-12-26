@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Checkout From Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/ridhimanwazir/Python-webapp-k8.git'
+                git branch: 'main', url: 'https://github.com/ridhimanwazir/python-webapp-cicd.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -53,6 +53,17 @@ pipeline{
                 sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
             }
         }
-        
+        stage('minikube deployment using ansible'){
+            steps{
+                dir('Ansible') {
+                    script {
+                        def ansibleCommand = """
+                            ansible-playbook -i /etc/ansible/hosts kube.yaml -vvv
+                        """
+                        sh(ansibleCommand)
+                  }
+                } 
+            }
+        }
     }
 }

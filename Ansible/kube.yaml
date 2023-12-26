@@ -1,17 +1,13 @@
 ---
-- hosts: all
-  become: true
-  become_user: root
+- name: deploy to k8
+  hosts: k8
+  gather_facts: false
+
   tasks:
-    - name: delete old deployment
-      command: kubectl delete -f /home/ubuntu/Deployment.yml --kubeconfig=/home/ubuntu/.kube/config
-      ignore_errors: true
-    - name: delete old service
-      command: kubectl delete -f /home/ubuntu/Service.yml --kubeconfig=/home/ubuntu/.kube/config
-      ignore_errors: true
-    - name: Copy deployment.yaml to Kubernetes master
+    - name: Copy deployment.yaml to Kubernetes
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
-        dest: /home/ridhimansingh/
-    - name: create new deployment
-      command: kubectl apply -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
+        dest: /home/ubuntu/
+
+    - name: Apply Deployment
+      command: kubectl apply -f /home/ubuntu/deployment.yaml
