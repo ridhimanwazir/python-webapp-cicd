@@ -1,6 +1,7 @@
 - name: docker build and push
   hosts: localhost # Replace with the hostname or IP address of your target server
-  connection: local  
+  connection: local
+  gather_facts: false  
   become: yes  # Run tasks with sudo privileges
 
   tasks:
