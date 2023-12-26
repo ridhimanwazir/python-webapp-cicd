@@ -17,6 +17,8 @@
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
         dest: /home/ubuntu/
+      become: yes
+      become_user: root
 
     - name: Apply Deployment
       command: kubectl apply -f /home/ubuntu/deployment.yaml
