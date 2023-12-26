@@ -7,25 +7,17 @@
   tasks:
     - name: Delete Deployment
       command: kubectl delete -f /home/ubuntu/deployment.yaml
-      become: yes
-      become_user: root
       ignore_errors: true
       
     - name: Remove file
       command: rm -rf /home/ubuntu/deployment.yaml
-      become: yes
-      become_user: root
       ignore_errors: true
 
     - name: Copy deployment.yaml to Kubernetes master
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
         dest: /home/ubuntu/
-      become: yes
-      become_user: root
 
     - name: Apply Deployment
       command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml
-      become: yes
-      become_user: root
 
