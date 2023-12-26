@@ -40,7 +40,6 @@ pipeline{
             steps {
                 dir('Ansible'){
                   script {
-                        // Assuming your Ansible playbook is in the same directory as your Jenkinsfile
                         def ansibleCommand = """
                             ansible-playbook -i /etc/ansible/hosts docker.yaml -vvv
                         """
@@ -52,6 +51,18 @@ pipeline{
         stage("TRIVY docker image scan"){
             steps{
                 sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
+            }
+        }
+        stage('minikube deployment using ansible'){
+            steps{
+                dir('Ansible') {
+                    script {
+                        def ansibleCommand = """
+                            ansible-playbook -i /etc/ansible/hosts kube.yaml -vvv
+                        """
+                        sh(ansibleCommand)
+                  }
+                } 
             }
         }
     }

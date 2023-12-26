@@ -4,12 +4,12 @@
   gather_facts: false
 
   tasks:
-    - name: Copy deployment.yaml to Kubernetes master
+    - name: Copy deployment.yaml to Kubernetes
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
-        dest: /home/ridhimansingh/
+        dest: /home/ubuntu/
       become: yes  # Use sudo for copying if required
       become_user: root  # Use a privileged user for copying if required
 
     - name: Apply Deployment
-      command: kubectl apply -f /home/ridhimansingh/deployment.yaml
+      command: kubectl apply -f /home/ubuntu/deployment.yaml
