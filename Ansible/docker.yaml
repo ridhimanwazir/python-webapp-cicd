@@ -2,6 +2,7 @@
 - name: docker build and push
   hosts: local
   gather_facts: false
+  become: yes  # Use sudo for copying if required
 
   tasks:
     - name: Update apt package cache
