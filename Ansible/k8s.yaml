@@ -7,10 +7,14 @@
   tasks:
     - name: Delete Deployment
       command: kubectl delete -f /home/ubuntu/deployment.yaml
+      become: yes
+      become_user: root
       ignore_errors: true
       
     - name: Remove file
       command: rm -rf /home/ubuntu/deployment.yaml
+      become: yes
+      become_user: root
       ignore_errors: true
 
     - name: Copy deployment.yaml to Kubernetes master
@@ -22,4 +26,6 @@
 
     - name: Apply Deployment
       command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml
+      become: yes
+      become_user: root
 
