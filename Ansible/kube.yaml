@@ -1,5 +1,5 @@
 ---
-- name: docker build and push
+- name: deploy to k8
   hosts: local
   gather_facts: false
 
@@ -8,8 +8,6 @@
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
         dest: /home/ubuntu/
-      become: yes  # Use sudo for copying if required
-      become_user: root  # Use a privileged user for copying if required
 
     - name: Apply Deployment
       command: kubectl apply -f /home/ubuntu/deployment.yaml

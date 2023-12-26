@@ -1,5 +1,5 @@
 ---
-- name: docker build and push
+- name: deploy to k8
   hosts: local
   gather_facts: false
 
