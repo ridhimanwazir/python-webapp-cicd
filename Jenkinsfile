@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Checkout From Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/ridhimanwazir/python-webapp-k8.git'
+                git branch: 'main', url: 'https://github.com/ridhimanwazir/python-webapp-cicd.git'
             }
         }
         stage("Sonarqube Analysis "){
