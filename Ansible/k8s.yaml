@@ -20,4 +20,9 @@
 
     - name: Apply Deployment
       command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
+    
+    - name: Port Forward
+      shell: "nohup kubectl port-forward svc/webapp-service 30000:80 --kubeconfig=/home/ubuntu/.kube/config > /dev/null 2>&1 &"
+      async: 0
+      poll: 0
 
