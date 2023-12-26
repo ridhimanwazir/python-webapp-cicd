@@ -2,6 +2,7 @@
 - name: deploy to k8
   hosts: k8
   gather_facts: false
+  become: yes
 
   tasks:
     - name: Copy deployment.yaml to Kubernetes
