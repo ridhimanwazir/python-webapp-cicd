@@ -6,7 +6,7 @@
 
   tasks:
     - name: Delete Deployment
-      command: kubectl delete -f /home/ubuntu/deployment.yaml
+      command: kubectl --v=8 delete -f /home/ubuntu/deployment.yaml
       ignore_errors: true
       
     - name: Remove file
