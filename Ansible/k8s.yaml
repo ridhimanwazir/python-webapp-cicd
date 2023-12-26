@@ -25,4 +25,8 @@
       shell: "nohup kubectl port-forward svc/webapp-service 30000:80 --kubeconfig=/home/ubuntu/.kube/config > /dev/null 2>&1 &"
       async: 0
       poll: 0
+      register: port_forward_result
+
+    - debug:
+        var: port_forward_result
 
