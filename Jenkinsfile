@@ -40,9 +40,13 @@ pipeline{
             steps {
                 dir('Ansible'){
                   script {
-                         installation: 'ansible', inventory: '/etc/ansible/', playbook: 'docker.yaml'
-                        }     
-                   }    
+                        // Assuming your Ansible playbook is in the same directory as your Jenkinsfile
+                        def ansibleCommand = """
+                            ansible-playbook -i /etc/ansible/ docker.yaml
+                        """
+                        sh(ansibleCommand)
+                  }
+                }    
               }
         }
         stage("TRIVY File scan"){
