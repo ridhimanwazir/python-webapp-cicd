@@ -21,4 +21,4 @@
       become_user: root
 
     - name: Apply Deployment
-      command: kubectl apply -f /home/ubuntu/deployment.yaml
+      command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml
