@@ -58,7 +58,7 @@ pipeline{
                 dir('Ansible') {
                     script {
                         def ansibleCommand = """
-                            ansible-playbook -i /etc/ansible/hosts kube.yaml -vvv
+                            ansible-playbook -i /etc/ansible/hosts k8s.yaml -vvv
                         """
                         sh(ansibleCommand)
                   }
