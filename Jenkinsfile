@@ -14,7 +14,7 @@ pipeline{
         }
         stage('Checkout From Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/ridhimanwazir/python-webapp-cicd.git'
+                git branch: 'main', url: 'https://github.com/ridhimanwazir/Python-webapp-k8.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -34,6 +34,20 @@ pipeline{
             steps{
                 dependencyCheck additionalArguments: '--scan ./ --format XML ', odcInstallation: 'DP-Check'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+        stage('Deploy image to docker hub') {
+            steps {
+                dir('Ansible'){
+                  script {
+                         installation: 'ansible', inventory: '/etc/ansible/', playbook: 'docker.yaml'
+                        }     
+                   }    
+              }
+        }
+        stage("TRIVY File scan"){
+            steps{
+                sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
             }
         }
     }
