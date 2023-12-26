@@ -1,7 +1,7 @@
 ---
-- name: Deploy Kubernetes Application
-  hosts: k8s  # Replace with your target Kubernetes master host or group
-  gather_facts: yes  # Gather facts about the target host
+- name: docker build and push
+  hosts: local
+  gather_facts: false
 
   tasks:
     - name: Copy deployment.yaml to Kubernetes master
