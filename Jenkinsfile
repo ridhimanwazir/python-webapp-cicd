@@ -42,7 +42,8 @@ pipeline{
                   script {
                         // Assuming your Ansible playbook is in the same directory as your Jenkinsfile
                         def ansibleCommand = """
-                            ansible-playbook -i /etc/ansible/hosts -c local docker.yaml -vvv
+                            ansible-playbook -i /etc/ansible/hosts --graph
+                            ansible-playbook -i /etc/ansible/hosts docker.yaml -vvv
                         """
                         sh(ansibleCommand)
                   }

@@ -1,6 +1,7 @@
 ---
 - name: docker build and push
-  hosts: localhost
+  hosts: local
+  connection: local
   gather_facts: false
   become: yes
 
