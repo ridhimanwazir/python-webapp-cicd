@@ -65,12 +65,5 @@ pipeline {
                 }
             }
         }
-        stage('Port Forward') {
-            steps {
-                script {
-                    sh 'nohup kubectl port-forward svc/webapp-service 30000:80 --kubeconfig=/home/ubuntu/.kube/config > /dev/null 2>&1 &'
-                }
-            }
-        }
     }
 }
