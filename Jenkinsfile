@@ -59,11 +59,16 @@ pipeline {
                     script {
                         def ansibleCommand = """
                             ansible-playbook -i /etc/ansible/hosts k8s.yaml -vvv
-                            # Add port forwarding
-                            nohup kubectl port-forward svc/webapp-service 30000:80 --kubeconfig=/home/ubuntu/.kube/config > /dev/null 2>&1 &
                         """
                         sh(ansibleCommand)
                     }
+                }
+            }
+        }
+        stage('Port Forward') {
+            steps {
+                script {
+                    sh 'nohup kubectl port-forward svc/webapp-service 30000:80 --kubeconfig=/home/ubuntu/.kube/config > /dev/null 2>&1 &'
                 }
             }
         }
