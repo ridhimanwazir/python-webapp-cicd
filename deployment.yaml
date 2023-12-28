@@ -18,16 +18,3 @@ spec:
           ports:
             - containerPort: 5000 # Expose the port specified in your Dockerfile
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: webapp-service
-spec:
-  type: LoadBalancer
-  selector:
-    app: webapp
-  ports:
-  - name: http
-    port: 80
-    targetPort: 5000
