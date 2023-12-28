@@ -2,22 +2,22 @@
 - name: deploy to k8
   hosts: local
   gather_facts: false
-  become: yes
+  become: yes  # Use sudo for copying if required
 
   tasks:
     - name: Delete Deployment
-      command: kubectl --v=8 delete -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
+      command: kubectl --v=8 delete -f /home/ridhimansingh/deployment.yaml --kubeconfig=/home/ridhimansingh/.kube/config
       ignore_errors: true
       
     - name: Remove file
-      command: rm -rf /home/ubuntu/deployment.yaml
+      command: rm -rf /home/ridhimansingh/deployment.yaml
       ignore_errors: true
 
     - name: Copy deployment.yaml to Kubernetes master
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
-        dest: /home/ubuntu/
+        dest: /home/ridhimansingh/
 
     - name: Apply Deployment
-      command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
+      command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ridhimansingh/.kube/config
 

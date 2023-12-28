@@ -25,6 +25,13 @@ pipeline {
                 }
             }
         }
+        stage("quality gate"){
+            steps {
+                script {
+                  waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
+                }
+           }
+        }
         stage("TRIVY File scan") {
             steps {
                 sh "trivy fs . > trivy-fs_report.txt"
@@ -36,34 +43,6 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-        stage('Deploy image to docker hub') {
-            steps {
-                dir('Ansible') {
-                    script {
-                        def ansibleCommand = """
-                            ansible-playbook -i /etc/ansible/hosts docker.yaml -vvv
-                        """
-                        sh(ansibleCommand)
-                    }
-                }
-            }
-        }
-        stage("TRIVY docker image scan") {
-            steps {
-                sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
-            }
-        }
-        stage('minikube deployment using ansible') {
-            steps {
-                dir('Ansible') {
-                    script {
-                        def ansibleCommand = """
-                            ansible-playbook -i /etc/ansible/hosts k8s.yaml -vvv
-                        """
-                        sh(ansibleCommand)
-                    }
-                }
-            }
-        }
+        
     }
 }
