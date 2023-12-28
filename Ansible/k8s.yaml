@@ -6,18 +6,18 @@
 
   tasks:
     - name: Delete Deployment
-      command: kubectl --v=8 delete -f /home/ridhimansingh/deployment.yaml --kubeconfig=/home/ridhimansingh/.kube/config
+      command: kubectl --v=8 delete -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
       ignore_errors: true
       
     - name: Remove file
-      command: rm -rf /home/ridhimansingh/deployment.yaml
+      command: rm -rf /home/ubuntu/deployment.yaml
       ignore_errors: true
 
     - name: Copy deployment.yaml to Kubernetes master
       copy:
         src: /var/lib/jenkins/workspace/python-webapp/deployment.yaml  # Assuming Jenkins workspace variable
-        dest: /home/ridhimansingh/
+        dest: /home/ubuntu/
 
     - name: Apply Deployment
-      command: kubectl apply --validate=false -f /home/ridhimansingh/deployment.yaml --kubeconfig=/home/ridhimansingh/.kube/config
+      command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
 
