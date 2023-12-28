@@ -17,4 +17,3 @@ spec:
           image: ridhimanwazir/python-webapp:latest # Replace with your Docker image name
           ports:
             - containerPort: 5000 # Expose the port specified in your Dockerfile
-
