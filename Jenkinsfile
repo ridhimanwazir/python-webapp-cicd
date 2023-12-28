@@ -43,6 +43,20 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-        
+        stage('Deploy image to docker hub') {
+            steps {
+                dir('Ansible') {
+                    script {
+                        ansiblePlaybook credentialsId: 'ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/', playbook: 'docker.yaml'
+                    }
+                }
+            }
+        }
+        stage("TRIVY docker image scan") {
+            steps {
+                sh "trivy image ridhimanwazir/python-webapp:latest > trivy.txt"
+            }
+        }
+
     }
 }
