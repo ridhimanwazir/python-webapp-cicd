@@ -30,5 +30,4 @@ spec:
     - protocol: TCP
       port: 80 # Service port
       targetPort: 5000 # Port in the container
-      nodePort: 30000
   type: NodePort # Use NodePort service type
