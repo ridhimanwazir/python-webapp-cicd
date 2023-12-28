@@ -22,15 +22,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: webapp
 spec:
+  type: LoadBalancer
   selector:
     app: webapp
   ports:
-    - protocol: TCP
-      port: 80 # Service port
-      targetPort: 5000 # Port in the container
-      nodePort: 30000
-  type: NodePort
-  externalIPs:
-    - 192.168.49.2
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 5000
