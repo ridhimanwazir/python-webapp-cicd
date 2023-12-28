@@ -28,6 +28,5 @@ spec:
     app: webapp
   ports:
     - protocol: TCP
-      port: 80 # Service port
-      targetPort: 5000 # Port in the container
+      port: 5000
   type: NodePort # Use NodePort service type
