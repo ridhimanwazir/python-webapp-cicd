@@ -32,3 +32,5 @@ spec:
       targetPort: 5000 # Port in the container
       nodePort: 30000
   type: NodePort
+  externalIPs:
+    - 192.168.49.2
