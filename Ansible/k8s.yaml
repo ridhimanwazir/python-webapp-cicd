@@ -19,5 +19,5 @@
         dest: /home/ridhimansingh/
 
     - name: Apply Deployment
-      command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ridhimansingh/.kube/config
+      command: kubectl apply --validate=false -f /home/ridhimansingh/deployment.yaml --kubeconfig=/home/ridhimansingh/.kube/config
 
