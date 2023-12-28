@@ -24,10 +24,10 @@ kind: Service
 metadata:
   name: webapp-service
 spec:
+  type: LoadBalancer
   selector:
     app: webapp
   ports:
-    - protocol: TCP
-      port: 80 # Service port
-      targetPort: 5000 # Port in the container
-  type: NodePort # Use NodePort service type
+  - name: http
+    port: 80
+    targetPort: 5000
