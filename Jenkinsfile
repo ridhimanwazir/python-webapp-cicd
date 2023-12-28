@@ -47,8 +47,11 @@ pipeline {
             steps {
                 dir('Ansible') {
                     script {
-                        ansiblePlaybook credentialsId: 'ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/', playbook: 'docker.yaml'
-                    }
+                            def ansibleCommand = """
+                                ansible-playbook -i /etc/ansible/hosts docker.yaml -vvv
+                            """
+                            sh(ansibleCommand)
+                   }
                 }
             }
         }
@@ -61,7 +64,10 @@ pipeline {
             steps {
                 dir('Ansible') {
                     script {
-                        ansiblePlaybook credentialsId: 'ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/', playbook: 'k8s.yaml'
+                def ansibleCommand = """
+                    ansible-playbook -i /etc/ansible/hosts k8s.yaml -vvv
+                """
+                sh(ansibleCommand)
                     }
                 }
             }
