@@ -17,3 +17,17 @@ spec:
           image: ridhimanwazir/python-webapp:latest # Replace with your Docker image name
           ports:
             - containerPort: 5000 # Expose the port specified in your Dockerfile
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 80 # Service port
+      targetPort: 5000 # Port in the container
+  type: NodePort # Use NodePort service type
