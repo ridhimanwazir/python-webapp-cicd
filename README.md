@@ -1,2 +1,2 @@
-# Python-webapp-k8
-Deploying Python webapp on miniKube using CI/CD with jenkins
+# Python-webapp
+Deploying Python webapp on miniKube using CI/CD with Jenkins
