@@ -25,5 +25,8 @@
     - name: Apply Deployment
       command: kubectl apply --validate=false -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
 
+    - name: Apply service
+      command: kubectl apply --validate=false -f /home/ridhimansingh/service.yaml --kubeconfig=/home/ubuntu/.kube/config
+
     - name: Apply Ingress
       command: kubectl apply --validate=false -f /home/ubuntu/ingress.yaml --kubeconfig=/home/ubuntu/.kube/config
