@@ -34,6 +34,10 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins in `Ubuntu 22.04`
   ```
   cd /etc/ansible
   sudo vi hosts
+  
+- Add the ip where jenkins is installed in my case localhost to allow ansible to run
   ```
-
+  [local]#any name you want
+  localhost
+- 
 
