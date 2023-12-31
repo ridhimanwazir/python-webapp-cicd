@@ -3,6 +3,8 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins
 
 ## Step 1 — Install Java, Jenkins, Docker, Trivy, minikube, Ansible, and helm
 
+[click here](www.google.com)
+
 ## Step 2 - SonarQube Server
 
 ### Use docker to start a Sonarqube Server which will be accessible on `ip:9000`
