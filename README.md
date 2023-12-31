@@ -24,8 +24,8 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins
 
 ## Jenkins Setup
 
-### Install Jenkins Plugins like JDK, Sonarqube Scanner, Ansible, OWASP Dependency Check, Docker, and Kubernetes
-### Enable jdk17, SonarScanner, Docker, and Ansible in Jenkins tools
-### Configure sonarQube in the Jenkins system
+- Install Jenkins Plugins like JDK, Sonarqube Scanner, Ansible, OWASP Dependency Check, Docker, and Kubernetes
+- Enable jdk17, SonarScanner, Docker, and Ansible in Jenkins tools
+- Configure sonarQube in the Jenkins system
 
 ## Step 3 - 
