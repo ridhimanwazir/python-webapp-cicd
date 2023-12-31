@@ -62,5 +62,5 @@ End-to-end demonstration video available on; [Loom](https://www.loom.com/share/f
   Prometheus - `minikubeIP:9090`
   
   Grafana - `minikubeIP:3000`
-- since we used helm for the setup Prometheus will by default scrap all available minikube metrics which can also be verified in `minikubeIP:9090/targets`
+- since we used helm for the setup Prometheus will by default scraps all available minikube metrics which can also be verified in `minikubeIP:9090/targets`
 - Add Prometheus as the default data source in Grafana and create a dashboard using one of the readily available ones on grafana with sufficient metrics required to set up monitoring.
