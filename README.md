@@ -1,5 +1,5 @@
 # Python-webapp
-Deploying Python webapp on miniKube using CI/CD with Jenkins
+Deploying Python webapp on miniKube using CI/CD with Jenkins in `Ubuntu 22.04`
 
 ## Step 1 — Install Java, Jenkins, Docker, Trivy, minikube, Ansible, and helm
 
@@ -28,4 +28,12 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins
 - Enable jdk17, SonarScanner, Docker, and Ansible in Jenkins tools
 - Configure sonarQube in the Jenkins system
 
-## Step 3 - 
+## Step 3 - Setup Ansible Repository in Ubuntu
+
+- Create an Inventory file in Ansible
+  ```
+  cd /etc/ansible
+  sudo vi hosts
+  ```
+
+
