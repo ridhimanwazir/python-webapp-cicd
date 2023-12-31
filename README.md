@@ -35,9 +35,28 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins in `Ubuntu 22.04`
   cd /etc/ansible
   sudo vi hosts
   
-- Add the ip where jenkins is installed in my case localhost to allow ansible to run
+- Add the IP where Jenkins is installed this will allow Ansible to run the setup for docker and minikube using the Playbooks
   ```
   [local]#any name you want
   localhost
-- 
+- verify that the host is reachable
+  ```
+  ansible -m ping all
 
+## Step 4 - Create Jenkins Pipeline using the Jenkinsfile available in this repo and add a build trigger to poll Git so that the pipeline can run whenever a new change is deployed
+
+- once the pipeline has run there will be a docker image with the specified tags registered to the docker registry and a docker container will be running which can be used to access the application on   
+  `localhost:5000`
+- There will be a minikube deployment, service, and ingress available( the service should be accessible on `minikubeIP:nodePort`
+- The ingress will have a domain assigned webapp.local which is mapped to minikubeIP
+  `Curl -L http:\\webapp.local` will return the html page
+
+## Step 5 - Monitoring and Logging using Prometheus and Grafana
+
+- Setup Prometheus and Grafana using the specific readme available in the respective folder in this repo `prometheus_setup/helm.md` && `grafana_setup/helm.md`,
+  which will start Prometheus and Grafana service in   
+  miniKube.
+  Prometheus - `minikubeIP:9090`
+  Grafana - `minikubeIP:3000`
+- since we used helm for the setup Prometheus will by default scrap all available minikube metrics which can also be verified in `minikubeIP:9090/targets`
+- Add Prometheus as the default data source in Grafana and create a dashboard using one of the readily available ones on grafana with sufficient metrics required to set up monitoring.
