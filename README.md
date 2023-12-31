@@ -5,7 +5,8 @@ End-to-end demonstration video available on; [Loom](https://www.loom.com/share/f
 
 ## Step 1 — Install Java, Jenkins, Docker, Trivy, minikube, Ansible, and helm
 
-[Java](https://www.rosehosting.com/blog/how-to-install-java-17-lts-on-ubuntu-20-04/)
+[Java](https://www.rosehosting.com/blog/how-to-install-java-17-lts-on-ubuntu-20-04/) ![image](https://github.com/ridhimanwazir/python-webapp-cicd/assets/46512771/92a47a9b-8b0c-41a5-bd06-582633567113)
+
 
 [Jenkins](https://www.jenkins.io/doc/book/installing/linux/)
 
