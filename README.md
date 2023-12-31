@@ -7,6 +7,7 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins in `Ubuntu`
 ### Architecture
 
 
+![image](https://github.com/ridhimanwazir/python-webapp-cicd/assets/46512771/91e05a6f-9574-42a0-a8e9-f11390025ab5)
 
 
 ### End-to-end demonstration video available on; [Loom](https://www.loom.com/share/f08365eaa7414e3c9480faaffdd979be?sid=7ea37988-b17f-4ede-ae88-613bc09551cc)
