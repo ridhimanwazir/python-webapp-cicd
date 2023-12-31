@@ -5,7 +5,7 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins
 
 ## Step 2 - SonarQube Server
 
-### Use docker to start a Sonarqube Server which will be accessible on <ip>:9000
+### Use docker to start a Sonarqube Server which will be accessible on `ip:9000`
 `docker run -d --name sonar -p 9000:9000 sonarqube:lts-community`
 
 ## Jenkins Setup
