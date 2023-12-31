@@ -56,7 +56,9 @@ Deploying Python webapp on miniKube using CI/CD with Jenkins in `Ubuntu 22.04`
 - Setup Prometheus and Grafana using the specific readme available in the respective folder in this repo `prometheus_setup/helm.md` && `grafana_setup/helm.md`,
   which will start Prometheus and Grafana service in   
   miniKube.
+  
   Prometheus - `minikubeIP:9090`
+  
   Grafana - `minikubeIP:3000`
 - since we used helm for the setup Prometheus will by default scrap all available minikube metrics which can also be verified in `minikubeIP:9090/targets`
 - Add Prometheus as the default data source in Grafana and create a dashboard using one of the readily available ones on grafana with sufficient metrics required to set up monitoring.
